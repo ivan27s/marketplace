@@ -1,0 +1,36 @@
+<div
+  class="container"
+  *ngIf="!loading; else loader"
+>
+  <h3>Мои товары:</h3>
+  <table *ngIf="products.length > 0; else empty">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th>Цена</th>
+      <th>Просмотры</th>
+      <th>Удалить</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.price}} грн.</td>
+      <td>{{product.views}}</td>
+      <td>
+        <button (click)="removeProduct(product._id)" class="btn red">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <ng-template #empty>
+    <p class="center">У вас пока нет добвленых товаров. Нажмите
+      <a routerLink="/addProduct">добавить товар</a>
+    </p>.
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

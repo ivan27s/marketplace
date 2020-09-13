@@ -1,0 +1,55 @@
+
+<nav>
+  <div class="nav-wrapper blue-grey darken-1">
+    <a routerLink="/" class="brand-logo">Главная</a>
+
+    <div class="cart right black-text">
+      <app-cart></app-cart>
+    </div>
+
+    <ul  class="right hide-on-med-and-down">
+      <li routerLinkActive="active"
+          *ngIf="!auth.isAuthenticated()">
+        <a routerLink="/login">Вход/Регистрация</a>
+      </li>
+      <li routerLinkActive="active"
+          *ngIf="auth.isAuthenticated()">
+        <a routerLink="/userProducts">Мои товары</a>
+      </li>
+      <li routerLinkActive="active"
+          *ngIf="auth.isAuthenticated()">
+        <a routerLink="/profile">Мой профиль</a>
+      </li>
+      <li routerLinkActive="active"
+          *ngIf="auth.isAuthenticated()"
+          (click)="logout($event)">
+        <a>Выход</a>
+      </li>
+      <li><a class="btn" routerLink="/addProduct">Добавить товар</a></li>
+    </ul>
+
+    <a (click)="openSidenav()" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul id="slide-out" class="sidenav a-sidenav " #sidenav>
+      <li  ><a class="btn sidenav-close" routerLink="/addProduct">Добавить товар</a></li>
+      <li routerLinkActive="active"
+          *ngIf="!auth.isAuthenticated()">
+        <a class="sidenav-close" routerLink="/login">Вход/Регистрация</a>
+      </li>
+      <li routerLinkActive="active"
+          *ngIf="auth.isAuthenticated()">
+        <a class="sidenav-close" routerLink="/profile">Мой профиль</a>
+      </li>
+      <li routerLinkActive="active"
+          *ngIf="auth.isAuthenticated()">
+        <a class="sidenav-close" routerLink="/userProducts">Мои товары</a>
+      </li>
+      <li routerLinkActive="active"
+          class="sidenav-close"
+          *ngIf="auth.isAuthenticated()"
+          (click)="logout($event)">
+        <a>Выход</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

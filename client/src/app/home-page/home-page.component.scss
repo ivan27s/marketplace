@@ -1,0 +1,61 @@
+
+.sort {
+  display: inline-block;
+  a {
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .active {
+    background: beige;
+    cursor: auto;
+  }
+}
+.product {
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  background: azure;
+  .image {
+    width: 15vw;
+    height: 15vw;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    cursor: pointer;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .product_info {
+    padding: 5px;
+    height: 15vw;
+    .product_head{
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 15px;
+      .name {
+        cursor: pointer;
+        color: black;
+        margin:0 10px 0 10px;
+        :hover {
+         opacity: 0.8;
+        }
+      }
+      .price {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.pagination {
+  margin: 30px;
+}

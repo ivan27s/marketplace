@@ -1,0 +1,96 @@
+<div class="container">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="card-content">
+      <span class="card-title">Добавить новый товар</span>
+      <div class="input-field">
+        <input
+          formControlName="name"
+          id="name"
+          type="text"
+          [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
+        >
+        <label for="name">Название товара:</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('name').invalid && form.get('name').touched"
+        >
+        <span *ngIf="form.get('name').errors['required']">Название товара не должно быть пустым</span>
+        <span *ngIf="form.get('name').errors['maxlength']">Максимальная длина названия 25 символов.</span>
+      </span>
+      </div>
+      <div class="input-field">
+        <input
+          formControlName="price"
+          id="price"
+          type="number"
+          [ngClass]="{'invalid': form.get('price').invalid && form.get('price').touched}"
+        >
+        <label for="price">Цена:</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('price').invalid && form.get('price').touched"
+        >
+        <span *ngIf="form.get('price').errors['required']">Поле Цена не должно быть пустым</span>
+      </span>
+      </div>
+
+      <div class="input-field">
+        <textarea
+          formControlName="description"
+          id="description"
+          class="materialize-textarea"
+          [ngClass]="{'invalid': form.get('description').invalid && form.get('description').touched}"
+        >
+        </textarea>
+        <label for="description">Описание товара: </label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('description').invalid && form.get('description').touched"
+        >
+        <span *ngIf="form.get('description').errors['required']">Описание товара не должно быть пустым</span>
+      </span>
+      </div>
+
+
+      <div class="input-field">
+        <select
+          formControlName="category" #select>
+          <option value="" disabled selected>Выберите категорию</option>
+          <option value="Техника и электроника" >Техника и электроника</option>
+          <option value="Одежда и обувь">Одежда и обувь</option>
+          <option value="Дом и сад">Дом и сад</option>
+        </select>
+        <label>Выберите категорию товара:</label>
+      </div>
+
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Изображение</span>
+          <input
+            formControlName="file"
+            type="file"
+            (change)="onFileUpload($event)"
+          >
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+
+    </div>
+    <div class="card-action">
+      <button
+        type="submit"
+        class="modal-action btn waves-effect"
+        [disabled]="form.invalid || form.disabled"
+      >
+        Создать
+      </button>
+    </div>
+
+  </form>
+</div>

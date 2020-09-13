@@ -1,0 +1,49 @@
+
+<a (click)="backClickHandler()"
+   class="back waves-effect waves-light btn"
+>
+  <i class="material-icons left">arrow_back</i>Назад
+</a>
+
+<div class="container"
+     *ngIf="productInfo$ | async as productInfo; else loader"
+>
+
+  <div class="product_top">
+    <div class="image" >
+      <img src="{{productInfo.product.imageSrc}}"
+           alt="{{productInfo.product.name}}">
+    </div>
+    <div class="product_head col s12 m7">
+      <p class="name">{{productInfo.product.name}}</p>
+      <p class="price">{{productInfo.product.price}} грн. </p>
+      <button
+        (click)="addCartProduct(productInfo.product)"
+        class="btn #ff8a80 red accent-1"
+      >В корзину</button>
+    </div>
+  </div>
+  <div class="description">
+    <h4>{{productInfo.product.name}}</h4>
+    <p>{{productInfo.product.description}}</p>
+  </div>
+
+  <div class="user">
+    <p>Продавец:</p>
+    <div class="user_info row">
+      <div class="user_head col s6">
+        <img src="{{productInfo.user.imageSrc}}" alt="{{productInfo.user.name}}">
+        <p>{{productInfo.user.name}}</p>
+      </div>
+      <div class="phone col s6">
+        <p>Номер телефона: </p>
+        <p> {{productInfo.user.phone}} </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

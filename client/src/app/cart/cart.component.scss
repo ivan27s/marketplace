@@ -1,0 +1,28 @@
+.cart_button {
+  margin-right: 5px;
+  display: flex;
+  width: 40px;
+  i {
+    font-size: 1.8rem;
+  }
+  span {
+    padding-top: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: orange;
+  }
+}
+table {
+  line-height: 20px;
+  .material-icons {
+    cursor: pointer;
+  }
+  .name {
+    color: black;
+    cursor: pointer;
+  }
+  .name:hover {
+    opacity: 0.8;
+  }
+}
+

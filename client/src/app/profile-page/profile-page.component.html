@@ -1,0 +1,40 @@
+<div class="container">
+  <div
+    *ngIf="user$ | async as user; else loader"
+    class="col s12 m7">
+    <h2 class="header">Ваш профиль</h2>
+    <div class="card ">
+      <div class="horizontal">
+        <img src="{{user.imageSrc}}">
+        <div class="card-content">
+          <p>Имя: {{user.name}} </p>
+          <p>Email: {{user.email}}</p>
+          <p>Номер телефона: {{user.phone}}</p>
+        </div>
+      </div>
+
+      <div class="card-stacked">
+        <div class="card-action">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <p><strong>Загрузить/изменить аватар</strong></p>
+            <input
+            formControlName="file"
+            type="file"
+            (change)="onFileUpload($event)"
+          >
+            <div>
+              <button
+                [disabled]="form.invalid || form.disabled"
+                type="submit" class="btn">Сохранить</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
+</div>
+

@@ -1,0 +1,17 @@
+p {
+  font-size: 1.8rem;
+}
+img {
+  margin: 5px;
+  border-radius: 50%;
+  max-height: 20vw;
+  max-width: 20vw;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+button {
+  margin-top: 10px;
+}

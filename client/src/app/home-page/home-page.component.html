@@ -1,0 +1,51 @@
+
+<div class="container"
+     *ngIf="data$ | async as data; else loader"
+>
+
+  <app-filter></app-filter>
+
+  <div class="sort">
+    Показать сначала:
+    <a (click)="sortClickHandler('new')"
+       [ngClass]="{'active': !params['sort'] || params['sort'] === 'new'}"
+    >Новинки</a>
+    <a (click)="sortClickHandler('cheap')"
+       [ngClass]="{'active': params['sort'] === 'cheap'}"
+    >Дешевые</a>
+    <a (click)="sortClickHandler('expensive')"
+       [ngClass]="{'active': params['sort'] === 'expensive'}"
+    >Дорогие</a>
+  </div>
+
+  <div class="row product"
+       *ngFor="let product of data.products | paginate:
+          { itemsPerPage: 5, currentPage: currentPage, totalItems: data.countAll}"
+  >
+    <div class="image col s3" (click)="productClickHandler(product._id)">
+      <img src="{{product.imageSrc}}" alt="">
+    </div>
+    <div class="product_info">
+      <div class="product_head">
+        <a class="name"><span (click)="productClickHandler(product._id)">
+          {{product.name}}
+        </span></a>
+        <p class="price">{{product.price}}грн. </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination center">
+    <pagination-controls (pageChange)="pageChange($event)"
+                         [previousLabel]="'Назад'"
+                         [nextLabel]="'Вперед'"
+
+    ></pagination-controls>
+  </div>
+
+
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

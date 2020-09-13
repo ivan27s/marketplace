@@ -1,0 +1,53 @@
+
+<div class="modal" #modal>
+  <div class="modal-content" >
+    <h4>Ваша корзина</h4>
+    <table class="highlight" >
+      <thead>
+      <tr>
+        <th>Название</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody >
+      <tr *ngFor="let product of cartService.products">
+        <td>
+          <a class="name" (click)="productClickHandler(product._id)">{{product.name}}</a>
+        </td>
+        <td>{{1}}</td>
+        <td>{{product.price}}</td>
+        <td>
+          <a (click)="removeProduct(product._id)"><i class="material-icons pointer red-text">delete</i></a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+    <div >
+      <p>Общая стоимость: <strong>{{cartService.getTotalPrice()}} грн.</strong></p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="modal-action waves-effect waves-black btn-flat"
+      (click)="cancel()"
+    >
+      Закрыть
+    </button>
+  </div>
+</div>
+
+<a (click)="open()"
+   class="waves-effect cart_button"
+>
+  <i class="material-icons ">shopping_cart</i>
+  <span>
+      {{(cartService.products && cartService.products.length > 0)
+         ? cartService.products.length : ' '}}
+  </span>
+
+</a>
+

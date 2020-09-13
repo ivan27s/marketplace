@@ -1,0 +1,42 @@
+<div class="filter row">
+  <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-field col l3 ">
+      <select
+        formControlName="category" #select>
+        <option value="all" >Все</option>
+        <option value="Техника и электроника" >Техника и электроника</option>
+        <option value="Одежда и обувь">Одежда и обувь</option>
+        <option value="Дом и сад">Дом и сад</option>
+      </select>
+      <label>Выберите категорию</label>
+    </div>
+
+    <div class="input-field col m2">
+      <input
+        formControlName="start"
+        id="start"
+        type="number"
+      >
+      <label for="start">Цена от</label>
+    </div>
+
+    <div class="input-field col m2">
+      <input
+        formControlName="end"
+        id="end"
+        type="number"
+      >
+      <label for="end">Цена до</label>
+    </div>
+
+    <div class="input-field col m2">
+      <button
+        type="submit"
+        class="modal-action btn waves-effect"
+      >
+        Применить
+      </button>
+    </div>
+
+  </form>
+</div>
